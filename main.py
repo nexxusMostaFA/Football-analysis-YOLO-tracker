@@ -32,11 +32,12 @@ video = read_video(video_path)
 model_path = r"C:\Users\mostafa\Documents\GitHub\Football-analysis-YOLO-tracker\models\best.pt"
 tracker = Tracker(model_path)
 
-# tracker.get_tracks(video)
-tracks = tracker.get_tracks(video)
+tracks = tracker.get_tracks(video , stub=True , stub_path=r"C:\Users\mostafa\Documents\GitHub\Football-analysis-YOLO-tracker\data\tracks_stub.pkl")
 
+tracks = tracker.find_position_tracks(tracks)
 
+tracks['ball'] = tracker.interpolate_ball_positions(tracks['ball'])
 
+frames = tracker.draw_annotations(video , tracks)
 
-
-# save_video(frames, r"C:\Users\mostafa\Documents\GitHub\Football-analysis-YOLO-tracker\data\Output-Video2.avi")
+save_video(frames, r"C:\Users\mostafa\Documents\GitHub\Football-analysis-YOLO-tracker\data\Output-Video.avi")
