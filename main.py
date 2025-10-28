@@ -42,19 +42,23 @@ tracks = tracker.find_position_tracks(tracks)
 
 tracks['ball'] = tracker.interpolate_ball_positions(tracks['ball'])
 
-frames = tracker.draw_annotations(video , tracks)
-
 player_team_assigner = PlayerTeamAssigner()
 
-player_team_assigner.assign_colors(frames[0],tracks['players'][0])
+player_team_assigner.assign_colors(video[0],tracks['players'][0])
 
 for frame_num , player in enumerate(tracks['players']):
     for track_id , track in player.items():
         bbox = track['bbox']
-        team_id = player_team_assigner.assign_teams(frames[frame_num] , bbox , track_id)
+        team_id = player_team_assigner.assign_teams(video[frame_num] , bbox , track_id)
         tracks['players'][frame_num][track_id]["team_id"] = team_id
         color = player_team_assigner.teams_dict[team_id]
         tracks['players'][frame_num][track_id]["color"] = color  
+
+
+
+frames = tracker.draw_annotations(video , tracks)
+
+# print(tracks['players'][0])
 
 ## croping image and save it 
 

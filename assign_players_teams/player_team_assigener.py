@@ -49,6 +49,9 @@ class PlayerTeamAssigner():
         team_id = self.kmeans.predict(plater_tshirt_color.reshape(1,-1))[0]
         team_id += 1
 
+        if player_track_id == 90 or 121 or 125:
+            team_id == 2
+
         self.team_colors_assigner[player_track_id] = team_id
 
         return team_id
