@@ -28,6 +28,7 @@ import cv2
 from utils import read_video, save_video
 from tracker import Tracker
 from assign_players_teams import PlayerTeamAssigner
+from ball_assigner import BallAssigner
 
 video_path = r"C:\Users\mostafa\Documents\GitHub\Football-analysis-YOLO-tracker\data\input_video.mp4"
 
@@ -53,6 +54,17 @@ for frame_num , player in enumerate(tracks['players']):
         tracks['players'][frame_num][track_id]["team_id"] = team_id
         color = player_team_assigner.teams_dict[team_id]
         tracks['players'][frame_num][track_id]["color"] = color  
+
+
+ball_assigner = BallAssigner()
+
+for frame_num  , player_track in enumerate(tracks['players']):
+    ball_bbox = tracks['ball'][frame_num][1]['bbox']
+    assigned_player = ball_assigner.ball_assigner(player_track , ball_bbox)
+    # print(assigned_player)
+
+    if assigned_player != -1:
+        tracks['players'][frame_num][assigned_player]['has_ball'] = True
 
 
 
