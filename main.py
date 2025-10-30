@@ -6,6 +6,7 @@ from torch.nn.modules.container import Sequential
 import numpy as np  
 import os
 import cv2
+from camera_movment_calc import CameraMovmentCalculator
 
 # torch.serialization.add_safe_globals([
 #     DetectionModel,
@@ -41,7 +42,13 @@ tracks = tracker.get_tracks(video , stub=True , stub_path=r"C:\Users\mostafa\Doc
 
 tracks = tracker.find_position_tracks(tracks)
 
+# print(tracks['ball'][0])
+
+# print("#" *50)
+
 tracks['ball'] = tracker.interpolate_ball_positions(tracks['ball'])
+
+# print(tracks['ball'][0])
 
 player_team_assigner = PlayerTeamAssigner()
 
@@ -68,7 +75,24 @@ for frame_num  , player_track in enumerate(tracks['players']):
 
 
 
-frames = tracker.draw_annotations(video , tracks)
+
+camera_movment_calculator = CameraMovmentCalculator(video[0])
+camera_movments = camera_movment_calculator.calculate_camera_movment(video , stub=True , stub_path=r"C:\Users\mostafa\Documents\GitHub\Football-analysis-YOLO-tracker\data\camera_movments_stub.pkl")
+
+# print(tracks['referees'][0])
+# print("#" *50)
+# print(tracks['ball'][0])
+
+
+
+
+tracks = camera_movment_calculator.add_camera_movments_to_tracks(tracks , camera_movments)
+
+
+frames = camera_movment_calculator.draw_camera_movement(video , camera_movments)
+
+frames = tracker.draw_annotations(frames , tracks)
+
 
 # print(tracks['players'][0])
 
