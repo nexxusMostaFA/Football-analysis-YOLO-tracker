@@ -30,6 +30,7 @@ from utils import read_video, save_video
 from tracker import Tracker
 from assign_players_teams import PlayerTeamAssigner
 from ball_assigner import BallAssigner
+from transformer import Transformer
 
 video_path = r"C:\Users\mostafa\Documents\GitHub\Football-analysis-YOLO-tracker\data\input_video.mp4"
 
@@ -90,6 +91,12 @@ tracks = camera_movment_calculator.add_camera_movments_to_tracks(tracks , camera
 
 
 frames = camera_movment_calculator.draw_camera_movement(video , camera_movments)
+
+transformer = Transformer()
+
+tracks = transformer.add_transformed_points_to_tracks(tracks)
+# print(tracks['players'][0])
+
 
 frames = tracker.draw_annotations(frames , tracks)
 
