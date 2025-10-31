@@ -31,6 +31,7 @@ from tracker import Tracker
 from assign_players_teams import PlayerTeamAssigner
 from ball_assigner import BallAssigner
 from transformer import Transformer
+from speed_and_distance import SpeedAndDistance
 
 video_path = r"C:\Users\mostafa\Documents\GitHub\Football-analysis-YOLO-tracker\data\input_video.mp4"
 
@@ -97,8 +98,43 @@ transformer = Transformer()
 tracks = transformer.add_transformed_points_to_tracks(tracks)
 # print(tracks['players'][0])
 
+speed_and_distance_calculator = SpeedAndDistance()
+
+tracks = speed_and_distance_calculator.calculate_speed_and_distance(tracks)
+
+frames = speed_and_distance_calculator.draw_speed_and_distance(frames , tracks)
 
 frames = tracker.draw_annotations(frames , tracks)
+
+# transformed_position_counter = 0
+# positions_counter = 0
+# camera_positions_counter = 0
+
+# for frame_num, track in enumerate(tracks['players']):
+#     for track_id, track_info in track.items():
+#         for i in range(frame_num, len(frames) - 1):
+#             if track_id not in tracks['players'][i]:
+#                 continue 
+
+#             if 'transformed_position' in tracks['players'][i][track_id] and tracks['players'][i][track_id]['transformed_position'] is not None:
+#                 transformed_position_counter += 1
+
+#             if 'position' in tracks['players'][i][track_id] and tracks['players'][i][track_id]['position'] is not None:
+#                 positions_counter += 1
+
+#             if 'position_with_camera_movment' in tracks['players'][i][track_id] and tracks['players'][i][track_id]['position_with_camera_movment'] is not None:
+#                 camera_positions_counter += 1
+
+# print("transformed positions num:", transformed_position_counter)
+# print("positions num:", positions_counter)
+# print("camera positions num:", camera_positions_counter)
+
+
+
+# print(transformed_positions_num , camera_positions_num , positions)
+
+
+
 
 
 # print(tracks['players'][0])

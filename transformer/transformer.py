@@ -24,11 +24,12 @@ class Transformer:
 
 
     def calc_transformer(self , point):
-        print("point before" , point)
+        # print("point before" , point)
         point = (int(point[0]), int(point[1]))
-        print("point after1" , point)
+        # print("point after1" , point)
 
         is_in_court = cv2.pointPolygonTest(self.vertices, point, False)>=0
+        
         if not is_in_court: 
             return None
         
