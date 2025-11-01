@@ -91,30 +91,56 @@ class CameraMovmentCalculator():
         return camera_movments
     
 
-    def draw_camera_movement(self,frames, camera_movement_per_frame):
-        output_frames=[]
-
+    def draw_camera_movement(self, frames, camera_movement_per_frame):
+        output_frames = []
         for frame_num, frame in enumerate(frames):
-            frame= frame.copy()
-
-            overlay = frame.copy()
-            cv2.rectangle(overlay,(0,0),(500,100),(255,255,255),-1)
-            alpha =0.6
-            cv2.addWeighted(overlay,alpha,frame,1-alpha,0,frame)
-
+            frame = frame.copy()
+            
             x_movement, y_movement = camera_movement_per_frame[frame_num]
-            frame = cv2.putText(frame,f"Camera Movement X: {x_movement:.2f}",(10,30), cv2.FONT_HERSHEY_SIMPLEX,1,(0,0,0),3)
-            frame = cv2.putText(frame,f"Camera Movement Y: {y_movement:.2f}",(10,60), cv2.FONT_HERSHEY_SIMPLEX,1,(0,0,0),3)
-
-            output_frames.append(frame) 
-
+            
+            # Panel dimensions
+            panel_width = 350
+            panel_height = 100
+            panel_x = 20
+            panel_y = 20
+            
+            # Shadow
+            overlay = frame.copy()
+            cv2.rectangle(overlay, (panel_x + 3, panel_y + 3),
+                        (panel_x + panel_width + 3, panel_y + panel_height + 3),
+                        (0, 0, 0), -1)
+            cv2.addWeighted(overlay, 0.3, frame, 0.7, 0, frame)
+            
+            # Panel background
+            overlay = frame.copy()
+            cv2.rectangle(overlay, (panel_x, panel_y),
+                        (panel_x + panel_width, panel_y + panel_height),
+                        (255, 255, 255), -1)
+            cv2.addWeighted(overlay, 0.85, frame, 0.15, 0, frame)
+            
+            # Border
+            cv2.rectangle(frame, (panel_x, panel_y),
+                        (panel_x + panel_width, panel_y + panel_height),
+                        (200, 200, 200), 2, cv2.LINE_AA)
+            
+            # Title
+            cv2.putText(frame, "CAMERA TRACKING", (panel_x + 15, panel_y + 30),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.7, (60, 60, 60), 2, cv2.LINE_AA)
+            
+            # X Movement with icon - BIGGER TEXT
+            cv2.circle(frame, (panel_x + 25, panel_y + 62), 6, (100, 150, 255), -1, cv2.LINE_AA)
+            cv2.putText(frame, f"X: {x_movement:+.2f}", (panel_x + 40, panel_y + 68),
+                    cv2.FONT_HERSHEY_DUPLEX, 0.8, (100, 150, 255), 2, cv2.LINE_AA)
+            
+            # Y Movement with icon - BIGGER TEXT
+            cv2.circle(frame, (panel_x + 200, panel_y + 62), 6, (255, 100, 100), -1, cv2.LINE_AA)
+            cv2.putText(frame, f"Y: {y_movement:+.2f}", (panel_x + 215, panel_y + 68),
+                    cv2.FONT_HERSHEY_DUPLEX, 0.8, (255, 100, 100), 2, cv2.LINE_AA)
+            
+            # Divider line
+            cv2.line(frame, (panel_x + 185, panel_y + 45), (panel_x + 185, panel_y + 80),
+                    (220, 220, 220), 2, cv2.LINE_AA)
+            
+            output_frames.append(frame)
+        
         return output_frames
-
-        
-
-
-
-
-
-
-        
