@@ -71,7 +71,7 @@ The annotated video will be automatically saved to:
 
 data/Output-Video.avi
 
-### 📂 Project Structure
+📂 Project Structure
 
 
 
