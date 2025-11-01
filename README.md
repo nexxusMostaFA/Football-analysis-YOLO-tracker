@@ -42,7 +42,7 @@ Copy code
 
 ### 1️⃣ Clone the Repository 
 
-git clone https://github.com/yourusername/Football-analysis-YOLO-tracker.git
+git clone https://github.com/nexxusMostaFA/Football-analysis-YOLO-tracker.git
 cd Football-analysis-YOLO-tracker
 
 
