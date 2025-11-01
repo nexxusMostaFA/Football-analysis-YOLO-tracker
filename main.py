@@ -19,6 +19,7 @@ video_path = r"C:\Users\mostafa\Documents\GitHub\Football-analysis-YOLO-tracker\
 
 video = read_video(video_path)
 
+
 model_path = r"C:\Users\mostafa\Documents\GitHub\Football-analysis-YOLO-tracker\models\best.pt"
 tracker = Tracker(model_path)
 
