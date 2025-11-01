@@ -67,6 +67,8 @@ for frame_num , player in enumerate(tracks['players']):
 
 ball_assigner = BallAssigner()
 
+team_ball_control= []
+
 for frame_num  , player_track in enumerate(tracks['players']):
     ball_bbox = tracks['ball'][frame_num][1]['bbox']
     assigned_player = ball_assigner.ball_assigner(player_track , ball_bbox)
@@ -74,6 +76,15 @@ for frame_num  , player_track in enumerate(tracks['players']):
 
     if assigned_player != -1:
         tracks['players'][frame_num][assigned_player]['has_ball'] = True
+        team_ball_control.append(tracks['players'][frame_num][assigned_player]['team_id'])
+    else:
+        if len(team_ball_control) >0:
+            team_ball_control.append(-1)
+        else:
+            team_ball_control.append(None)
+
+team_ball_control= np.array(team_ball_control)
+
 
 
 
@@ -104,7 +115,9 @@ tracks = speed_and_distance_calculator.calculate_speed_and_distance(tracks)
 
 frames = speed_and_distance_calculator.draw_speed_and_distance(frames , tracks)
 
-frames = tracker.draw_annotations(frames , tracks)
+
+
+frames = tracker.draw_annotations(frames , tracks , team_ball_control)
 
 # transformed_position_counter = 0
 # positions_counter = 0

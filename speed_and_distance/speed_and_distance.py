@@ -23,15 +23,15 @@ class SpeedAndDistance:
 
                     start_position = track_dict[frame_num][track_id]['transformed_position']
                     last_position = track_dict[last_frame][track_id]['transformed_position']
-                    
+
                     if start_position is None or last_position is None:
                         continue
 
-                    print(start_position)
-                    print("#" *50)
+                    # print(start_position)
+                    # print("#" *50)
                     start_position = tuple(start_position[0])
                     last_position = tuple(last_position[0])
-                    print(start_position)
+                    # print(start_position)
 
 
                     dictance = measure_distance(start_position , last_position)
