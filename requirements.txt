@@ -1,4 +1,23 @@
-opencv-python == 4.12.0.88
-numpy ==2.2.1
-matplotlib ==3.10.7
-ultralytics ==8.3.217
+torch==2.4.0
+torchvision==0.19.0
+torchaudio==2.4.0
+ultralytics==8.2.73
+
+opencv-python==4.10.0.84
+supervision==0.21.0
+
+scikit-learn==1.5.1
+numpy==1.26.4
+pandas==2.2.3
+scipy==1.13.1
+
+matplotlib==3.9.2
+tqdm==4.66.5
+Pillow==10.4.0
+
+pickle-mixin==1.0.2
+
+flask==3.0.3
+fastapi==0.115.0
+uvicorn==0.30.3
+streamlit==1.39.0
