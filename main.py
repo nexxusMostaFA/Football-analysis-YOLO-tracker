@@ -15,15 +15,17 @@ from ball_assigner import BallAssigner
 from transformer import Transformer
 from speed_and_distance import SpeedAndDistance
 
-video_path = r"\data\input_video.mp4"
+video_path = r"C:\Users\mostafa\Documents\GitHub\Football-analysis-YOLO-tracker\data\input_video.mp4"
 
 video = read_video(video_path)
 
 
-model_path = r"\models\best.pt"
+
+
+model_path = r"C:\Users\mostafa\Documents\GitHub\Football-analysis-YOLO-tracker\models\best.pt"
 tracker = Tracker(model_path)
 
-tracks = tracker.get_tracks(video , stub=True , stub_path=r"data\tracks_stub.pkl")
+tracks = tracker.get_tracks(video , stub=True , stub_path=r"C:\Users\mostafa\Documents\GitHub\Football-analysis-YOLO-tracker\data\tracks_stub.pkl")
 
 tracks = tracker.find_position_tracks(tracks)
 
@@ -73,7 +75,7 @@ team_ball_control= np.array(team_ball_control)
 
 
 camera_movment_calculator = CameraMovmentCalculator(video[0])
-camera_movments = camera_movment_calculator.calculate_camera_movment(video , stub=True , stub_path=r"\data\camera_movments_stub.pkl")
+camera_movments = camera_movment_calculator.calculate_camera_movment(video , stub=True , stub_path=r"C:\Users\mostafa\Documents\GitHub\Football-analysis-YOLO-tracker\data\camera_movments_stub.pkl")
 
 # print(tracks['referees'][0])
 # print("#" *50)
@@ -103,4 +105,4 @@ frames = speed_and_distance_calculator.draw_speed_and_distance(frames , tracks)
 
 
 
-save_video(frames, r"\data\Output-Video.avi")
+save_video(frames, r"C:\Users\mostafa\Documents\GitHub\Football-analysis-YOLO-tracker\data\Output-Video.avi")
