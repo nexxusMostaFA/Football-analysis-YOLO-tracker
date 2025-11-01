@@ -17,38 +17,38 @@ Transform raw football footage into rich analytical insights using state-of-the-
 
 ---
 
-## 🎯 Overview
+## Overview
 
 An **enterprise-grade football analytics platform** that leverages cutting-edge deep learning to extract actionable insights from match footage. Built on **YOLOv8**, **ByteTrack**, and advanced computer vision techniques, this system delivers professional-level analysis comparable to industry solutions.
 
-### 🌟 What Makes This Special?
+### What about this project?
 
-- 🧠 **Intelligent Detection**: Multi-class object detection with 95%+ accuracy
-- 🎯 **Precision Tracking**: Frame-by-frame player and ball tracking with ID persistence
-- 🎨 **Automatic Team Classification**: ML-powered team assignment using color clustering
-- 📊 **Real-Time Analytics**: Speed, distance, possession, and movement metrics
-- 🎥 **Camera Compensation**: Advanced optical flow for stabilized measurements
-- 🗺️ **Perspective Transformation**: 3D-to-2D mapping for accurate spatial analysis
-- 🔥 **Production Ready**: Flask API for seamless integration
+- **Intelligent Detection**: Multi-class object detection with 95%+ accuracy
+- **Precision Tracking**: Frame-by-frame player and ball tracking with ID persistence
+- **Automatic Team Classification**: ML-powered team assignment using color clustering
+- **Real-Time Analytics**: Speed, distance, possession, and movement metrics
+- **Camera Compensation**: Advanced optical flow for stabilized measurements
+- **Perspective Transformation**: 3D-to-2D mapping for accurate spatial analysis
+- **Production Ready**: Flask API for seamless integration
 
 ---
 
-## ✨ Features
+## Features
 
 ### Core Capabilities
 
 | Feature | Description | Technology |
 |---------|-------------|------------|
-| **🎯 Object Detection** | Detect players, referees, and ball in real-time | YOLOv8 |
-| **🔄 Multi-Object Tracking** | Persistent ID tracking across frames | ByteTrack |
-| **👕 Team Assignment** | Automatic team classification by jersey color | K-Means Clustering |
-| **⚡ Speed Analysis** | Real-time velocity calculation (km/h) | Optical Flow |
-| **📏 Distance Tracking** | Cumulative distance covered per player | Coordinate Mapping |
-| **🏆 Possession Stats** | Team ball control percentage | Proximity Detection |
-| **📹 Camera Motion** | Compensate for panning and zooming | Feature Matching |
-| **🗺️ Field Mapping** | Bird's-eye view transformation | Homography |
-| **🎨 Visual Overlays** | Rich annotations and heat maps | OpenCV |
-| **🌐 REST API** | HTTP endpoints for video processing | Flask |
+| **Object Detection** | Detect players, referees, and ball in real-time | YOLOv8 |
+| **Multi-Object Tracking** | Persistent ID tracking across frames | ByteTrack |
+| **Team Assignment** | Automatic team classification by jersey color | K-Means Clustering |
+| **Speed Analysis** | Real-time velocity calculation (km/h) | Optical Flow |
+| **Distance Tracking** | Cumulative distance covered per player | Coordinate Mapping |
+| **Possession Stats** | Team ball control percentage | Proximity Detection |
+| **Camera Motion** | Compensate for panning and zooming | Feature Matching |
+| **Field Mapping** | Bird's-eye view transformation | Homography |
+| **Visual Overlays** | Rich annotations and heat maps | OpenCV |
+| **REST API** | HTTP endpoints for video processing | Flask |
 
 ### Advanced Analytics
 
@@ -60,7 +60,7 @@ An **enterprise-grade football analytics platform** that leverages cutting-edge 
 
 ---
 
-## 🎬 Demo
+## Demo
 
 ### Input vs Output
 
@@ -68,7 +68,7 @@ An **enterprise-grade football analytics platform** that leverages cutting-edge 
 <tr>
 <td width="50%">
 
-**📥 Input Video**
+**Input Video**
 - Raw match footage
 - Any resolution/format
 - Single or multi-camera
@@ -76,7 +76,7 @@ An **enterprise-grade football analytics platform** that leverages cutting-edge 
 </td>
 <td width="50%">
 
-**📤 Output Video**
+**Output Video**
 - Player tracking overlays
 - Speed & distance metrics
 - Team colors & IDs
@@ -102,7 +102,7 @@ Match Statistics:
 
 ---
 
-## 🏗️ System Architecture
+## System Architecture
 
 ```mermaid
 graph TD
@@ -110,10 +110,10 @@ graph TD
     B --> C[ByteTrack Tracker]
     C --> D[Team Assigner]
     C --> E[Ball Assigner]
-    D --> F[Speed Calculator]
+    D --> F[Camera Movement Estimator]
     E --> F
-    F --> G[Camera Movement Estimator]
-    G --> H[View Transformer]
+    F --> G[View Transformer]
+    G --> H[Speed Calculator]
     H --> I[Annotator]
     I --> J[Output Video]
     
@@ -125,17 +125,17 @@ graph TD
 
 ### Processing Pipeline
 
-1. **🎥 Video Ingestion** → Frame extraction and preprocessing
-2. **🔍 Detection** → YOLOv8 inference on each frame
-3. **🔗 Tracking** → ByteTrack associates detections across frames
-4. **🎨 Classification** → K-Means assigns team colors
-5. **⚡ Kinematics** → Speed and distance computation
-6. **📐 Transformation** → Perspective correction
-7. **🎬 Rendering** → Annotation and video encoding
+1. **Video Ingestion** → Frame extraction and preprocessing
+2. **Detection** → YOLOv8 inference on each frame
+3. **Tracking** → ByteTrack associates detections across frames
+4. **Classification** → K-Means assigns team colors
+5. **Transformation** → Perspective correction
+6. **Kinematics** → Speed and distance computation
+7. **Rendering** → Annotation and video encoding
 
 ---
 
-## 🚀 Installation
+## Installation
 
 ### Prerequisites
 
@@ -147,11 +147,11 @@ graph TD
 ### Quick Start
 
 ```bash
-# 1️⃣ Clone the repository
+# Clone the repository
 git clone https://github.com/nexxusMostaFA/Football-analysis-YOLO-tracker.git
 cd Football-analysis-YOLO-tracker
 
-# 2️⃣ Create virtual environment
+# Create virtual environment
 python -m venv venv
 
 # Activate (Windows)
@@ -160,11 +160,11 @@ venv\Scripts\activate
 # Activate (macOS/Linux)
 source venv/bin/activate
 
-# 3️⃣ Install dependencies
+# Install dependencies
 pip install --upgrade pip
 pip install -r requirements.txt
 
-# 4️⃣ Download YOLO weights (if not included)
+# Download YOLO weights (if not included)
 # Place best.pt in models/ directory
 ```
 
@@ -189,7 +189,7 @@ pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
 
 ---
 
-## 📖 Usage
+## Usage
 
 ### Basic Usage
 
@@ -202,30 +202,6 @@ python main.py
 
 # Output will be saved to
 # data/Output-Video.avi
-```
-
-### Advanced Configuration
-
-```python
-# main.py - Custom Configuration
-from tracker import Tracker
-
-# Initialize with custom parameters
-tracker = Tracker(
-    model_path='models/best.pt',
-    confidence_threshold=0.3,
-    iou_threshold=0.7,
-    tracking_threshold=0.5
-)
-
-# Process video with options
-tracker.process_video(
-    input_path='data/input_video.mp4',
-    output_path='data/output.avi',
-    save_crops=True,
-    generate_heatmap=True,
-    export_stats=True
-)
 ```
 
 ### Command Line Arguments
@@ -268,38 +244,10 @@ curl -X POST \
   -o analyzed_output.avi
 ```
 
-#### 2️⃣ Get Statistics
-
-```bash
-GET /stats/{video_id}
-
-curl http://localhost:5000/stats/abc123
-```
-
-**Response:**
-```json
-{
-  "video_id": "abc123",
-  "duration": 120.5,
-  "total_players": 22,
-  "ball_detection_rate": 94.3,
-  "team_a": {
-    "possession": 58,
-    "avg_speed": 13.2,
-    "total_distance": 8.4
-  },
-  "team_b": {
-    "possession": 42,
-    "avg_speed": 12.8,
-    "total_distance": 7.9
-  }
-}
-```
-
 #### 3️⃣ Health Check
 
 ```bash
-GET /health
+GET /healt
 
 curl http://localhost:5000/health
 ```
@@ -382,8 +330,8 @@ Football-analysis-YOLO-tracker/
 | Element | Color | Indicator |
 |---------|-------|-----------|
 | **Ball** | 🟢 Green | Triangle |
-| **Team A** | 🔵 Blue | Ellipse |
-| **Team B** | 🔴 Red | Ellipse |
+| **Team A** | based on the team shirt | Ellipse |
+| **Team B** | based on the team shirt | Ellipse |
 | **Referee** | 🟡 Yellow | Ellipse |
 | **Speed** | ⚡ White | Text overlay |
 | **Distance** | 📏 White | Text overlay |
@@ -402,7 +350,7 @@ Football-analysis-YOLO-tracker/
 
 ---
 
-## 🔬 Technical Details
+## Technical Details
 
 ### Model Specifications
 
@@ -435,7 +383,7 @@ dominant_colors = kmeans.fit_predict(pixels)
 
 ---
 
-## 📊 Performance Benchmarks
+## Performance Benchmarks
 
 | Configuration | FPS | GPU Memory | Accuracy |
 |--------------|-----|-----------|----------|
@@ -448,7 +396,7 @@ dominant_colors = kmeans.fit_predict(pixels)
 
 ---
 
-## 🛠️ Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -469,19 +417,11 @@ pip install ultralytics --upgrade
 
 ---
 
-## 🚧 Roadmap
 
-- [ ] **v2.0**: Real-time streaming support (RTSP/RTMP)
-- [ ] **v2.1**: Player identification (jersey numbers)
-- [ ] **v2.2**: Tactical formation detection
-- [ ] **v2.3**: Automated highlight generation
-- [ ] **v2.4**: Multi-camera synchronization
-- [ ] **v2.5**: Cloud deployment (AWS/Azure)
-- [ ] **v3.0**: 3D pose estimation
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Please follow these steps:
 
@@ -507,13 +447,13 @@ black --check .
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see [LICENSE](LICENSE) file for details.
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **Ultralytics** - YOLOv8 framework
 - **ByteTrack** - Multi-object tracking algorithm
@@ -522,7 +462,7 @@ This project is licensed under the MIT License - see [LICENSE](LICENSE) file for
 
 ---
 
-## 📧 Contact & Support
+## Contact & Support
 
 - **Author**: Mostafa (nexxusMostaFA)
 - **GitHub**: [@nexxusMostaFA](https://github.com/nexxusMostaFA)
@@ -535,6 +475,6 @@ This project is licensed under the MIT License - see [LICENSE](LICENSE) file for
 
 **⭐ Star this repo if you find it useful!**
 
-Made with ❤️ by [nexxusMostaFA](https://github.com/nexxusMostaFA)
+Made by [nexxusMostaFA](https://github.com/nexxusMostaFA)
 
 </div>
