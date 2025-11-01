@@ -15,7 +15,7 @@ This project detects, tracks, and analyzes players, referees, and the ball to ex
 - ✅ Camera movement compensation  
 - ✅ Perspective transformation (bird’s-eye correction)  
 - ✅ Output annotated video with all overlays  
-- ✅ Optional Flask / FastAPI / Streamlit integration  
+- ✅ Optional Flask
 
 ---
 
@@ -33,28 +33,29 @@ Speed & Distance Calculator → Team Assigner → Ball Control
 ↓
 Annotated Output Video (.avi or .mp4)
 
+yaml
+Copy code
 
 ---
 
 ## 🛠️ Installation  
 
-### 1️⃣ Clone the Repository  
-```bash
+### 1️⃣ Clone the Repository 
+
 git clone https://github.com/yourusername/Football-analysis-YOLO-tracker.git
 cd Football-analysis-YOLO-tracker
 
 
-
-2️⃣ Create a Virtual Environment
+### 1️⃣ Clone the Repository 
 python -m venv venv
 venv\Scripts\activate     # Windows
 # or
 source venv/bin/activate  # macOS/Linux
 
-3️⃣ Install Dependencies
+### 3️⃣ Install Dependencies
 pip install -r requirements.txt
 
-🎬 Usage
+# 🎬 Usage
 ▶ Step 1 — Add your input video
 
 Place your football match video in:
@@ -70,7 +71,7 @@ The annotated video will be automatically saved to:
 
 data/Output-Video.avi
 
-📂 Project Structure
+### 📂 Project Structure
 FOOTBALL-ANALYSIS-YOLO-TRACKER/
 │
 ├── assign_players_teams/
@@ -125,7 +126,7 @@ FOOTBALL-ANALYSIS-YOLO-TRACKER/
 ├── requirements.txt                # Dependencies list
 └── README.md                       # Project documentation
 
-🌐 Optional: Run as a Flask API
+### 🌐 Optional: Run as a Flask API
 
 You can analyze uploaded videos directly via a web endpoint.
 
@@ -150,59 +151,23 @@ if __name__ == '__main__':
 
 Run:
 
-python flask_app.py
+## python flask_app.py
 
 
 Then test with:
 
 curl -X POST -F "video=@data/input_video.mp4" http://127.0.0.1:5000/analyze --output result.avi
 
-📊 Output Visualization
+# 📊 Output Visualization
 
-🟢 Ball → green triangle
+# 🟢 Ball → green triangle
 
-🔵 Player → ellipse with team color
+# 🔵Player → ellipse with team color
 
-🟠 Referee → yellow ellipse
+# 🟠 Referee → yellow ellipse
 
-⚡ Speed & Distance displayed on screen
+# ⚡ Speed & Distance displayed on screen
 
-🎯 Team Control Panel shows real-time ball possession
+# 🎯 Team Control Panel shows real-time ball possession
 
-🎥 Camera Movement Overlay displays X & Y movement
-
-💡 Requirements Summary
-
-Python ≥ 3.9
-
-PyTorch ≥ 2.4
-
-Ultralytics YOLOv8 ≥ 8.2
-
-OpenCV ≥ 4.10
-
-scikit-learn ≥ 1.5
-
-supervision ≥ 0.21
-
-Flask / FastAPI / Streamlit (optional)
-
-🧾 License
-
-Licensed under the MIT License.
-Feel free to use, modify, and improve this project.
-
-🤝 Contributing
-
-Contributions are welcome!
-If you’d like to fix bugs, improve visuals, or add new metrics — open a PR 🚀
-
-📬 Author
-
-Mostafa
-📧 Contact: [Add your email or GitHub profile here]
-
-
----
-
-Would you like me to add a **“Run on Streamlit”** section (so users can upload a vide
+# 🎥 Camera Movement Overlay displays X & Y movement
